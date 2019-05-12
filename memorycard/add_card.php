@@ -43,10 +43,7 @@
 		if ($conn -> connect_error ) {
 			die("Khong the ket noi den server : " .$conn->connect_error); 
 		}
-		$check_num_card = "select idCard from cards where idGroupCard = '$idgroupcard'";
-		$rs_check_num = mysqli_query($conn, $check_num_card);
-		$num = mysqli_num_rows($rs_check_num);
-		$_num = $num + 1;
+	
 		$title = substr($idgroupcard, 2);
 		$id_card = "C".$title.date('dmyHims');
 		//echo $id_card;
