@@ -10,7 +10,7 @@
 /* Kích thước các mặt */
 .flip-container, .front, .back {
 	width: 180px;
-	height: 240px;
+	height: 210px;
 }
  
 /* flip speed goes here */

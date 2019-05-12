@@ -86,25 +86,44 @@
 					?>
 					<h2><b><?php echo $title ?></b></h2>
 					<p class="description"><?php echo $description ?></p>
-					
+					<p class="user">
+						<?php
+							$servername = "localhost";
+							$username = "root";
+							$password = "1";
+							$dbname = "memorycards";
+
+							$conn = new mysqli($servername, $username, $password, $dbname);
+							if ($conn -> connect_error ) {
+								die("Khong the ket noi den server : " .$conn->connect_error); 
+							}
+							$_iduser = "select idUser from groupcards where idGroupCard = '$id' ";
+							$rs_iduser = mysqli_query($conn, $_iduser);
+							$array_groupcards = mysqli_fetch_array($rs_iduser, MYSQLI_ASSOC);
+							$_id = $array_groupcards['idUser'];
+
+							$sql_user = "select userName from users where idUser = '$_id'";
+							$result_user = mysqli_query($conn,$sql_user);
+							$array_users = mysqli_fetch_array($result_user, MYSQLI_ASSOC);
+
+							$sql_num_card = "select idCard from cards where idGroupCard = '$id'";
+							$rs_num_card = mysqli_query($conn, $sql_num_card);
+						?>
+						<image src="image/<?php echo $array_users['userName']?>.jpg" alt="thumbnail" hight="10" width="15">
+						<?php
+							echo $array_users['userName'];
+						?> 
+					</p>
+
 				</div>
 
 				<!-- phần show ra các card ở bên phải -->
 				<div class="col-md-8">
-					<h1 style="text-align: center">Cards</h1>
+					<h1 style="text-align: center">Cards(<?php echo mysqli_num_rows($rs_num_card)?>)</h1>
 					<div class="jumbotron clearfix">
 
 					<?php
-						$servername = "localhost";
-						$username = "root";
-						$password = "1";
-						$dbname = "memorycards";
-
-						$conn = new mysqli($servername, $username, $password, $dbname);
-						if ($conn -> connect_error ) {
-							die("Khong the ket noi den server : " .$conn->connect_error); 
-						}
-
+					
 						$sql = "select * from cards where idGroupCard = '$id' ";
 						$result = mysqli_query($conn, $sql);
 						if(mysqli_num_rows($result) != 0){

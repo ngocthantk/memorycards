@@ -1,3 +1,48 @@
+<?php
+	$servername = "localhost";
+	$username = "root";
+	$password = "1";
+	$dbname = "memorycards";
+
+	$conn = new mysqli($servername, $username, $password, $dbname);
+	if ($conn -> connect_error ) {
+		die("Khong the ket noi den server : " .$conn->connect_error); 
+	}
+
+	$_myfile = "cardid.txt";
+	$_tmp = fopen($_myfile, "r");
+	while (!feof($_tmp)){
+		$_iduser = fgets($_tmp);
+		break;
+	}
+	fclose($_tmp);
+
+	$idcard = $_iduser;
+
+	//đưa ra idgroupcard chứa thẻ
+	$sql_idgroupcards = "select idGroupCard from cards where idCard = '$idcard'";
+	$rs_idgroupcards = mysqli_query($conn, $sql_idgroupcards);
+	$array_groupcards = mysqli_fetch_array($rs_idgroupcards, MYSQLI_ASSOC);
+
+	// xóa thẻ
+	//echo "<script> if(confirm('Bạn có chắc chắn xóa thẻ không?')) </script>";
+	$sql_del = "delete from cards where idCard = '$idcard'";
+	if(mysqli_query($conn, $sql_del)){
+		echo "<script> alert('Xóa thành công') </script>";
+	}
+
+	//kiểm tra trong groupcard có còn card không nếu không thì xóa groupcard
+	$idgroupcard = $array_groupcards['idGroupCard'];
+	$check_num = "select idCard from cards where idGroupCard ='$idgroupcard' ";
+	$rs_check = mysqli_query($conn, $check_num);
+	$a = mysqli_fetch_array($rs_check);
+
+	if (mysqli_num_rows($rs_check) == 0){
+		$del_groupcard = "delete from groupcards where idGroupCard = '$idgroupcard'";
+		$rs = mysqli_query($conn,$del_groupcard);
+	}
+	//echo "<script> alert(confirm('Bạn có chắc chắn xóa thẻ không?')) </script>";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -144,7 +189,6 @@
 												?> 
 											</p>
 											<p><span class="glyphicon glyphicon glyphicon-book"></span><?php echo (mysqli_num_rows($rs))?></p>
-										</image>
 
 										</div>
 									</div>

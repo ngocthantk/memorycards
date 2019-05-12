@@ -156,6 +156,19 @@
 											</div>
 										</a>
 									</div>
+									<div class="user">
+										<p>
+											<?php
+												$id = "select userName from users where idUser = '".$array_groupcards['idUser']."' ";
+												$rs_id = mysqli_query($conn, $id);
+												$array_username = mysqli_fetch_array($rs_id, MYSQLI_ASSOC);
+											?>
+											<image src="image/<?php echo $array_username['userName']?>.jpg" alt="thumbnail" hight="10" width="15">
+											<?php
+												echo $array_username['userName'];
+											?> 
+										</p>
+									</div>
 									<div class="number-cards">
 										<div>
 											<?php

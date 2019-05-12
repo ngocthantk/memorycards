@@ -133,6 +133,17 @@
 														$sql_count = "select * from cards where idGroupCard = '".$array_groupcards['idGroupCard']."'";
 														$rs = mysqli_query($conn, $sql_count);
 													?>
+													<p class="user">
+														<?php
+															$id = "select userName from users where idUser = '".$array_groupcards['idUser']."' ";
+															$rs_id = mysqli_query($conn, $id);
+															$array_username = mysqli_fetch_array($rs_id, MYSQLI_ASSOC);
+														?>
+														<image src="image/<?php echo $array_username['userName']?>.jpg" alt="thumbnail" hight="10" width="15">
+														<?php
+															echo $array_username['userName'];
+														?> 
+													</p>
 													<p><span class="glyphicon glyphicon glyphicon-book"></span><?php echo (mysqli_num_rows($rs))?></p>
 												</div>
 											</div>

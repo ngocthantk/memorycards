@@ -6,6 +6,7 @@
 	<!-- Latest compiled and minified CSS & JS -->
 	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/card_name.css">
+	<link rel="stylesheet" type="text/css" href="css/add.css">
 	<script src="jquery/jquery.js"></script>
 	<script src="bootstrap/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="latthe.css">
@@ -103,27 +104,42 @@
 					?>
 					<h2><b><?php echo $title; ?></b></h2>
 					<p class="description"><?php echo $description; ?></p>
-					
+					<p class="user">
+						<?php
+							$servername = "localhost";
+							$username = "root";
+							$password = "1";
+							$dbname = "memorycards";
+
+							$conn = new mysqli($servername, $username, $password, $dbname);
+							if ($conn -> connect_error ) {
+								die("Khong the ket noi den server : " .$conn->connect_error); 
+							}
+							$_iduser = "select idUser from groupcards where idGroupCard = '$id' ";
+							$rs_iduser = mysqli_query($conn, $_iduser);
+							$array_groupcards = mysqli_fetch_array($rs_iduser, MYSQLI_ASSOC);
+							$_id = $array_groupcards['idUser'];
+							$sql_user = "select userName from users where idUser = '$_id'";
+							$result_user = mysqli_query($conn,$sql_user);
+							$array_users = mysqli_fetch_array($result_user, MYSQLI_ASSOC);
+
+							$sql_num_card = "select idCard from cards where idGroupCard = '$id'";
+							$rs_num_card = mysqli_query($conn, $sql_num_card);
+
+						?>
+						<image src="image/<?php echo $array_users['userName']?>.jpg" alt="thumbnail" hight="10" width="15">
+						<?php
+							echo $array_users['userName'];
+						?> 
+					</p>
 				</div>
 
 				<!-- phần show ra các card ở bên phải -->
 				<div class="col-md-8">
-					<h1 style="text-align: center">Cards</h1>
+					<h1 style="text-align: center">Cards(<?php echo mysqli_num_rows($rs_num_card)?>)</h1>
 					<div class="jumbotron clearfix">
 						
 					<?php
-						
-
-						$servername = "localhost";
-						$username = "root";
-						$password = "1";
-						$dbname = "memorycards";
-
-						$conn = new mysqli($servername, $username, $password, $dbname);
-						if ($conn -> connect_error ) {
-							die("Khong the ket noi den server : " .$conn->connect_error); 
-						}
-
 						$sql = "select * from cards where idGroupCard = '$id' ";
 						$result = mysqli_query($conn, $sql);
 						if(mysqli_num_rows($result) != 0){
@@ -144,7 +160,7 @@
 													else{
 												?>
 														<div class="boxx-border clearfix">
-															<p><?php echo $array_cards['frontCard'] ?></p>
+															<p><b><?php echo $array_cards['frontCard'] ?></b></p>
 														</div>
 												<?php
 													}
@@ -162,21 +178,56 @@
 													else{
 												?>
 														<div class="boxx-border clearfix">
-															<p><?php echo $array_cards['backCard'] ?></p>
+															<p><b><?php echo $array_cards['backCard'] ?></b></p>
 														</div>
 												<?php
 													}
 												?>
+										
 											</div>
 										</div>
+									</div>
+									<div style="float:right">
+										<a href="edit.php?idCard=<?php echo $array_cards['idCard'] ?>" name ="edit" method="get">
+											<h6 class="glyphicon glyphicon-edit" ></h6>
+										</a>
+										<a name="del" href="delete.php?id=<?php echo $array_cards['idCard']?>&idgroupcard=<?php echo $id?>&title=<?php echo $title?>&description=<?php echo $description?>" method="get">
+											<h7  class="glyphicon glyphicon-trash"></h7>
+										</a>
+										<?php 
+											//if (isset($_GET['edit']) || isset($_GET['del'])){
+										//if (file_exists('idcard.txt')){
+											unlink('cardid.txt');
+										
+											$_myfile = fopen("cardid.txt", "a");
+											$_id = $array_cards['idCard'];
+											fwrite($_myfile, $_id);
+											fclose($_myfile);
+
+										//if (file_exists('C:/wamp64/www/PHP/memorycard/idgroupcard.txt')){
+											unlink('groupcardid.txt');
+										
+											$_myfileGC = fopen("groupcardid.txt", "a");
+											$_idGC = $array_cards['idGroupCard'];
+											fwrite($_myfileGC, $_idGC);
+											fclose($_myfileGC);
+											//}
+										?>
 									</div>
 								</div>
 							<?php
 							}
 						}
 					?>
+						<div class="add_card">
+							<a href="add_card.php?title=<?php echo $title?>" method="get">
+								<h9 class="glyphicon glyphicon-plus" > </h9>
+							</a>
+						</div>
+					</div>
 					</div>
 				</div>
+
 			</div>
 		</main>
 	</div>
