@@ -188,31 +188,12 @@
 										</div>
 									</div>
 									<div style="float:right">
-										<a href="edit.php?idCard=<?php echo $array_cards['idCard'] ?>" name ="edit" method="get">
+										<a href="write_file_edit.php?idCard=<?php echo $array_cards['idCard'] ?>&idgroupcard=<?php echo $id?>&title=<?php echo $title?>&description=<?php echo $description?>" name ="edit" method="get">
 											<h6 class="glyphicon glyphicon-edit" ></h6>
 										</a>
-										<a name="del" href="delete.php?id=<?php echo $array_cards['idCard']?>&idgroupcard=<?php echo $id?>&title=<?php echo $title?>&description=<?php echo $description?>" method="get">
+										<a name="del" href="write_file_delete.php?id=<?php echo $array_cards['idCard']?>&idgroupcard=<?php echo $id?>&title=<?php echo $title?>&description=<?php echo $description?>" method="get">
 											<h7  class="glyphicon glyphicon-trash"></h7>
 										</a>
-										<?php 
-											//if (isset($_GET['edit']) || isset($_GET['del'])){
-										//if (file_exists('idcard.txt')){
-											unlink('cardid.txt');
-										
-											$_myfile = fopen("cardid.txt", "a");
-											$_id = $array_cards['idCard'];
-											fwrite($_myfile, $_id);
-											fclose($_myfile);
-
-										//if (file_exists('C:/wamp64/www/PHP/memorycard/idgroupcard.txt')){
-											unlink('groupcardid.txt');
-										
-											$_myfileGC = fopen("groupcardid.txt", "a");
-											$_idGC = $array_cards['idGroupCard'];
-											fwrite($_myfileGC, $_idGC);
-											fclose($_myfileGC);
-											//}
-										?>
 									</div>
 								</div>
 							<?php
@@ -220,7 +201,7 @@
 						}
 					?>
 						<div class="add_card">
-							<a href="add_card.php?title=<?php echo $title?>" method="get">
+							<a href="write_file_add.php?idGroupCard=<?php echo $id?>" method="get">
 								<h9 class="glyphicon glyphicon-plus" > </h9>
 							</a>
 						</div>

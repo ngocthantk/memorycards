@@ -24,15 +24,8 @@
 		}
 		fclose($tmp);
 
-		$_myfile = "cardid.txt";
-		$_tmp = fopen($_myfile, "r");
-		while (!feof($_tmp)){
-			$_iduser = fgets($_tmp);
-			break;
-		}
-		fclose($_tmp);
 
-		$_myfilegc = "groupcardid.txt";
+		$_myfilegc = "idgroupcard.txt";
 		$_tmpgc = fopen($_myfilegc, "r");
 		while (!feof($_tmpgc)){
 			$_idgroupcard = fgets($_tmpgc);
@@ -41,7 +34,6 @@
 		fclose($_tmpgc);
 
 		$idgroupcard = $_idgroupcard;
-		$idcard = $_iduser;
 		//echo $idcard;
 		$servername = "localhost";
 		$username = "root";
