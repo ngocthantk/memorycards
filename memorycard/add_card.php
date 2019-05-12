@@ -49,7 +49,7 @@
 		$_num = $num + 1;
 		$title = substr($idgroupcard, 2);
 		$id_card = "C".$title.date('dmyHims');
-		echo $id_card;
+		//echo $id_card;
 
 		//thêm thẻ vào nhóm thẻ
 
