@@ -33,7 +33,7 @@
 		fclose($_tmp);
 
 		$idcard = $_iduser;
-		echo $idcard;
+		//echo $idcard;
 		$servername = "localhost";
 		$username = "root";
 		$password = "1";
