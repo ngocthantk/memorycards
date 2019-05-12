@@ -159,7 +159,7 @@
 							?>
 								<div class="one-topic">
 									<div class="image-show">
-										<a href="card_name_login.php?id=<?php echo $array_groupcards['idGroupCard'] ?>&title=<?php echo $array_groupcards['title'] ?>&description=<?php echo $array_groupcards['description'] ?>&cover=<?php echo $array_groupcards['cover'] ?>" method="get">
+										<a href="card_name_login_noedit.php?id=<?php echo $array_groupcards['idGroupCard'] ?>&title=<?php echo $array_groupcards['title'] ?>&description=<?php echo $array_groupcards['description'] ?>&cover=<?php echo $array_groupcards['cover'] ?>" method="get">
 											<div class="image">
 												<img src="<?php echo $array_groupcards['cover']?>" alt="" height="170" width="150">
 											</div>
@@ -171,7 +171,7 @@
 										</div>
 									</div>
 									<div class="title-card">
-										<a href="card_name_login.php?id=<?php echo $array_groupcards['idGroupCard'] ?>&title=<?php echo $array_groupcards['title'] ?>&description=<?php echo $array_groupcards['description'] ?>&cover=<?php echo $array_groupcards['cover'] ?>" method="get">
+										<a href="card_name_login_noedit.php?id=<?php echo $array_groupcards['idGroupCard'] ?>&title=<?php echo $array_groupcards['title'] ?>&description=<?php echo $array_groupcards['description'] ?>&cover=<?php echo $array_groupcards['cover'] ?>" method="get">
 											<div class="text-title-card">
 												<p><?php echo $array_groupcards['title']?></p>
 											</div>

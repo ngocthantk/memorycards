@@ -48,7 +48,8 @@
 		$num = mysqli_num_rows($rs_check_num);
 		$_num = $num + 1;
 		$title = substr($idgroupcard, 2);
-		$id_card = "C".$title.$_num;
+		$id_card = "C".$title.date('dmyHims');
+		echo $id_card;
 
 		//thêm thẻ vào nhóm thẻ
 

@@ -109,7 +109,7 @@
 										?>
 											<div class="card_row clearfix">
 												<div class="col-md-4 left">
-													<a href="card_name_login.php?id=<?php echo $array_groupcards['idGroupCard'] ?>&title=<?php echo $array_groupcards['title'] ?>&description=<?php echo $array_groupcards['description'] ?>&cover=<?php echo $array_groupcards['cover'] ?>" method="get">
+													<a href="card_name_login_noedit.php?id=<?php echo $array_groupcards['idGroupCard'] ?>&title=<?php echo $array_groupcards['title'] ?>&description=<?php echo $array_groupcards['description'] ?>&cover=<?php echo $array_groupcards['cover'] ?>" method="get">
 													<?php
 														if ($array_groupcards['cover'] == NULL){
 													?>
@@ -125,7 +125,7 @@
 													</a>
 												</div>
 												<div class="col-md-8 right" id="title">
-													<a href="card_name_login.php?id=<?php echo $array_groupcards['idGroupCard'] ?>&title=<?php echo $array_groupcards['title'] ?>&description=<?php echo $array_groupcards['description'] ?>&cover=<?php echo $array_groupcards['cover'] ?>" method="get">
+													<a href="card_name_login_noedit.php?id=<?php echo $array_groupcards['idGroupCard'] ?>&title=<?php echo $array_groupcards['title'] ?>&description=<?php echo $array_groupcards['description'] ?>&cover=<?php echo $array_groupcards['cover'] ?>" method="get">
 														<h3><?php echo $array_groupcards['title'] ?></h3>
 													</a>
 													<p><?php echo $array_groupcards['description'] ?></p>
