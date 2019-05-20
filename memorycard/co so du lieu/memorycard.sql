@@ -1,1 +1,2 @@
-show databases;
+select *
+from cards

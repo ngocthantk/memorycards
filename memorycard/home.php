@@ -62,7 +62,7 @@
 		<section>
 			<div class="container">
 				<div class="row" >
-					<div class="col-md-12" >
+					<div class="col-md-12 col-xs-6" >
 						<div id="carousel-id" class="carousel slide" data-ride="carousel" >
 							<ol class="carousel-indicators">
 								<li data-target="#carousel-id" data-slide-to="0" class=""></li>

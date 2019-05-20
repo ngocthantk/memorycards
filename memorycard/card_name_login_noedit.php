@@ -56,7 +56,7 @@
 							<a href="home.php">SmartCards</a>
 						</li>	
 					</ul>
-					<form class="navbar-form navbar-left" method ="GET" role="search" action="search.php">
+					<form class="navbar-form navbar-left" method ="GET" role="search" action="search_login.php">
 						<div class="form-group">
 							<input type="text" id="text_search" class="form-control" placeholder="Search">
 						</div>
